@@ -1,5 +1,9 @@
 <?php 
 
+
+// Avvio la sessione per utilizzare $_SESSION
+session_start();
+
 // includo file functions.php
 include_once 'functions.php';
 
@@ -12,28 +16,23 @@ include_once 'functions.php';
     // Genero la password casuale utilizzando la function
     $generated_password = $generateRandomPassword($password_length);
 
-    // Mostrare la password all'utente attraverso un alert
-    echo "<div class='alert alert-success mt-3'>Password Generata: $generated_password</div>";
+    // Memorizzo la password in $_SESSION
+    $_SESSION['generated_password'] = $generated_password;
+
+    // Eseguo il redirect alla pagina show_password.php
+    header('Location: show_password.php');
+    exit();
 };
-
-// Mostrare il pulsante Reset solo dopo che l'utente ha generato la password
-if (isset($_GET['password_length'])) {
-    echo '<a href="index.php" class="btn btn-secondary mt-3">Reset</a>';
-}
-
 ?>
 
 
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap link -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css' integrity='sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==' crossorigin='anonymous'/>
-    <title>Document</title>
-</head>
+<?php
+$pageTitle = "Generatore di Password Casuale";
+include 'head.php';
+?>
 <body>
     <div class="container">
     <h1 class="mt-5">Generatore di Password Casuale</h1>
