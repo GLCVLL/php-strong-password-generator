@@ -8,6 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="container">
+    <h1 class="mt-5">Generatore di Password Casuale</h1>
+        <form method="get" action="#" class="my-3">
+            <div class="form-group">
+                <label for="password_length">Lunghezza Password:</label>
+                <input type="number" id="password_length" name="password_length" class="form-control" min="6" max="50" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Genera Password</button>
+        </form>
+    </div>
 </body>
 </html>
