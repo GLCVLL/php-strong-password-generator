@@ -23,6 +23,11 @@ $generateRandomPassword = function ($length) {
 
     // Mostrare la password all'utente attraverso un alert
     echo "<div class='alert alert-success mt-3'>Password Generata: $generated_password</div>";
+};
+
+// Mostrare il pulsante Reset solo dopo che l'utente ha generato la password
+if (isset($_GET['password_length'])) {
+    echo '<a href="index.php" class="btn btn-secondary mt-3">Reset</a>';
 }
 
 ?>
@@ -41,7 +46,7 @@ $generateRandomPassword = function ($length) {
 <body>
     <div class="container">
     <h1 class="mt-5">Generatore di Password Casuale</h1>
-        <form method="get" action="#" class="my-3">
+        <form method="get" action="#" class="my-3" <?php if (isset($_GET['password_length'])) echo 'style="display: none;"'; ?>>
             <div class="form-group">
                 <label for="password_length">Scegli un numero per la lunghezza Password:</label>
                 <input type="number" id="password_length" name="password_length" class="form-control" min="5" max="50" required>
