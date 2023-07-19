@@ -1,17 +1,8 @@
 <?php 
-// GENERO PASSWORD CASUALE
-$generateRandomPassword = function ($length) {
-    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
-    $password = '';
-    $chars_length = strlen($chars);
 
-    for ($i = 0; $i < $length; $i++) {
-        $random_char = $chars[rand(0, $chars_length - 1)];
-        $password .= $random_char;
-    }
+// includo file functions.php
+include_once 'functions.php';
 
-    return $password;
-};
  // Verifico se il form è stato inviato
  if (isset($_GET['password_length'])) {
     $password_length = intval($_GET['password_length']);
